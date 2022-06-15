@@ -121,6 +121,8 @@ and they can involve a thread
 that holds a lock dying while another thread is waiting for it.
 
 ```
+![image](https://user-images.githubusercontent.com/79755743/173889988-049ad66c-d916-4f97-8eb1-28025e916203.png)
+
 ```diff
 
 + Lock Your Shared Data!
@@ -128,7 +130,6 @@ that holds a lock dying while another thread is waiting for it.
  All shared data must be protected by locks/Mutexes. Failure to do so will result in truly ugly bugs. 
 
 - Mutexes : 
-![image](https://user-images.githubusercontent.com/79755743/173889176-03c8c1a8-4767-4518-9e89-3e9f3a335562.png)
 
 When the lock is set, no other thread can access the locked region of code.
 
