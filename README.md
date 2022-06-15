@@ -1,4 +1,6 @@
-# Philosophers 
+# Philosophers or THE Dining philosophers problem which was originally formulated in 1965 by Edsger Dijkstra as a student exam exercise
+
+
 # Anas TABTI
 In this project, you will learn the basics of threading a process. You will see how to create threads and you will discover mutexes
 ![image](https://user-images.githubusercontent.com/79755743/173885069-93a568de-c149-4e2d-aa58-8944059fc3c2.png)
@@ -142,7 +144,29 @@ When the lock is set, no other thread can access the locked region of code.
  made runnable, and given the chance to obtain ownership. It is possible that some other thread will 
  call pthread_mutex_lock() and get ownership before the newly awakened thread does. This is perfectly correct
  behavior and must not affect the correctness of your 
-```
+``` 
+# Unix epoch (time): 
+
+Milliseconds : 1000 ms = 1second  ;
+A millisecond (ms or msec) is one thousandth of a second and is commonly used in measuring the time to read to or write from a hard disk or a CD-ROM player or to measure packet travel time on the Internet. For comparison, a microsecond (us or Greek letter mu plus s) is one millionth (10-6) of a second.
+
+### The gettimeofday() function :  It is defined in sys/time.h header file.
+tv_sec : It is the number of seconds since the epoch.
+tv_usec :It is additional microseconds after number of seconds calculation since the epoch. 
+the gettimeofday() function to record the current timestamp. This function is passed a pointer to a struct timeval object, which contains two members: tv sec and t usec. These represent the number of elapsed seconds and microseconds since January 1, 1970 (known as the UNIX EPOCH).
+
+
+## The Unix epoch is 00:00:00 UTC on 1 January 1970 (an arbitrary date).
+(Epoch :  (noun) a particular period of time in history or a person's life.)
+
+### Real time 
+is measured either from some standard point (calendar time) or from some fixed point,
+typically the start, in the life of a process (elapsed or wall clock time). On UNIX systems, 
+calendar time is measured in seconds since midnight on the morning of January 1, 1970, Universal Coordinated Time
+(usually abbreviated UTC), and coordinated on the base point for time zones defined by the longitudinal line passing
+through Greenwich, England. This date, which is close to the birth of the UNIX system, is referred to as the Epoch.
+
+
 ## CITED
 
 #### https://en.wikipedia.org/wiki/Dining_philosophers_problem
