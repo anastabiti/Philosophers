@@ -111,7 +111,7 @@ Overhead costs in threaded code include direct effects such as the time it takes
 ```diff
 
 - Deadlocks 
-A deadlock is kind of a Catch-22, where one thread needs another thread to do something before it proceeds, 
+A deadlock is , where one thread needs another thread to do something before it proceeds, 
 and the other thread needs something from the first. So they both sit there, doing nothing, waiting for each other, forever.
 This is a bad thing. A typical deadlock occurs when thread T1 obtains lock M1, and thread T2 obtains lock M2. Then 
 thread T1 tries to obtain lock M2, while thread T2 tries for lock M1. Although typically a two-thread kind of problem,
@@ -121,4 +121,43 @@ and they can involve a thread
 that holds a lock dying while another thread is waiting for it.
 
 ```
+```diff
+
++ Lock Your Shared Data!
+
+ All shared data must be protected by locks/Mutexes. Failure to do so will result in truly ugly bugs. 
+
+- Mutexes : 
+![image](https://user-images.githubusercontent.com/79755743/173889176-03c8c1a8-4767-4518-9e89-3e9f3a335562.png)
+
+When the lock is set, no other thread can access the locked region of code.
+
+ The mutual exclusion lock is the simplest and most primitive synchronization variable. 
+ It provides a single, absolute owner for the section of code (thus a critical section) 
+ that it brackets between the calls to pthread_mutex_lock() and pthread_mutex_unlock(). 
+ The first thread that locks the mutex gets ownership, and any subsequent attempts to lock it will fail,
+ causing the calling thread to go to sleep. When the owner unlocks it, one of the sleepers will be awakened,
+ made runnable, and given the chance to obtain ownership. It is possible that some other thread will 
+ call pthread_mutex_lock() and get ownership before the newly awakened thread does. This is perfectly correct
+ behavior and must not affect the correctness of your 
+```
+## CITED
+
+#### https://en.wikipedia.org/wiki/Dining_philosophers_problem
+####  https://pages.mtu.edu/~shene/NSF-3/e-Book/MUTEX/locks.html
+####  http://www.cse.cuhk.edu.hk/~ericlo/teaching/os/lab/9-PThread/Pass.html
+####  https://www.youtube.com/watch?v=7ENFeb-J75k&ab_channel=Computerphile
+####  https://pages.mtu.edu/~shene/NSF-3/e-Book/MUTEX/TM-example-philos-1.html 
+####  https://en.wikipedia.org/wiki/Unix_time
+####  https://www.codegrepper.com/code-examples/c/c+get+time+in+milliseconds
+####  https://www.epochconverter.com/
+####  Multithreaded programming with pthreads (Lewis B., Berg D.J.) (z-lib.org).pdf
+####  https://docs.oracle.com/cd/E19205-01/820-0619/geosb/index.html
+####  https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2&ab_channel=CodeVault
+####  https://miniature-wolfberry-eb4.notion.site/ac7edc44b2f14c7a9b227a72aa3c555b?v=1af803759bf54b6088d9210bfdbfa45c
+####  Practical System Programming with C - Pragmatic Example Applications in Linux and Unix-Based Operating Systems. (Sri Manikanta Palakollu) (z-lib.org).pdf
+####  https://www.thegeekstuff.com/2012/04/terminate-c-thread/
+####  Threads Primer A Guide to Multithreaded Programming (Bil Lewis, Daniel J. Berg) (z-lib.org).pdf
+
+
 
