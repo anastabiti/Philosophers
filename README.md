@@ -1,6 +1,6 @@
 # My NOTES (Anas TABTI)
 
-# Philosophers THE Dining philosophers problem which was originally formulated in 1965 by Edsger Dijkstra as a student exam exercise
+# Philosophers or The Dining philosophers problem which was originally formulated in 1965 by Edsger Dijkstra as a student exam exercise
 
 
 ### In this project, you will learn the basics of threading a process. You will see how to create threads and you will discover mutexes
