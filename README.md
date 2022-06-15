@@ -43,6 +43,8 @@ When a thread is unblocked after a wait for some event, it is made ready again. 
  To show all processes use    ps -e          (source https://git.ir/lynda-linux-shells-and-processes/)
  
  # Concurrency vs. Parallelism 
+ ![image](https://user-images.githubusercontent.com/79755743/173887491-83790b7c-0fce-4093-89d0-8d8019b2aa46.png)
+
 
 ### Concurrency means that two or more threads (or traditional processes) can be in the middle of executing code at the same time;
 it could be the same code or it could be different code. The threads may or may not actually be executing at the same time, 
@@ -58,3 +60,65 @@ Every multitasking operating system has always had numerous concurrent processes
 On a multiprocessor machine, many different threads can run in parallel. They are, of course, also running concurrently. 
 
 #### Parallelism is when tasks literally run at the same time, e.g., on a multicore processor. (source https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism)
+
+
+
+
+## Pthreads :
+
+
+### Support of Multithreading in C 
+The C programming language does not have built-in library support for multithreaded programming. Even though C is a general-purpose programming language that is widely used in embedded systems, system programming, and so forth, some vendors have developed libraries that deal with multithreading to achieve parallelism and concurrency. The library to develop portable multithreaded applications is pthread.h; that is, the POSIX thread library. POSIX stands for portable operating system interface. 
+ POSIX threads are lightweight and designed to be very easy to implement. 
+ The pthread.h library is an external third-party library that helps you effectively do tasks.
+## The following are the functions in the pthread.h library that create, manipulate, and exit the threads :
+###  • pthread_create 
+###  • pthread_join 
+### • pthread_self 
+###  • pthread_equal 
+###  • pthread_exit
+###  • pthread_cancel 
+###  • pthread_detach
+
+
+## Pthread_create (int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg))
+ creates a new thread with a thread descriptor. A descriptor is an information container of the thread state, execution status, the process that it belongs to, related threads, stack reference information, and thread-specific resource information allocated by the process. This function takes four arguments as parameters. The return type of this function is an integer.
+ 
+##  pthread_join  (    int     pthread_join(pthread_t thread, void **value_ptr);)
+
+This function waits for the termination of another thread. It takes two parameters as arguments and returns the integer type. It returns 0 on successful termination and –1 if any failure occurs.
+The following describes the parameter: 
+ • thread takes the ID of the thread that is currently waiting for termination 
+• thread_return is an argument that points to the exit status of the termination thread, which is a NULL value.
+![image](https://user-images.githubusercontent.com/79755743/173887615-eebc5e92-78a1-4a82-9883-30522f0b2dce.png)
+
+##  pthread_detach  (    int  pthread_detach(pthread_t thread);  )
+
+This function detaches a thread in a detached state. It takes a thread descriptor as an argument and returns the integer value as output. The following shows the syntax. 
+The following describes the parameter. thread is a descriptor variable that is passed as an ID, which you want to detach it. These functions are the most common functions in multithreading operations.
+
+# Synchronization
+
+Synchronization refers to one of two distinct but related concepts: synchronization of processes, and synchronization of data. Process synchronization refers to the idea that multiple processes are to join up or handshake at a certain point, in order to reach an agreement or commit to a certain sequence of action. Data synchronization refers to the idea of keeping multiple copies of a dataset in coherence with one another, or to maintain data integrity. Process synchronization primitives are commonly used to implement data synchronization.
+
+### Synchronization Issues 
+In order to write any kind of concurrent program, you must be able to reliably synchronize the different threads. Failure to do so will result in all sorts of ugly, messy bugs. Without synchronization, two threads will start to change some data at the same time, one will overwrite the other.
+
+ Synchronization is the method of ensuring that multiple threads coordinate their activities so that one thread doesn’t accidently change data that another thread is working on. This is done by providing function calls that can limit the number of threads that can access some data concurrently. In the simplest case (a Mutual Exclusion Lock—a mutex), only one thread at a time can execute a given piece of code. This code presumably alters some global data or does reads or writes to a device.
+
+ Thread synchronization is defined as a mechanism which ensures that two or more concurrent processes or threads do not simultaneously execute some particular program segment known as critical section.
+Overhead costs in threaded code include direct effects such as the time it takes to synchronize your threads. Many clever algorithms are available for avoiding synchronization in some cases, but none of them is portable. You’ll have to use some synchronization in just about any threaded code. It is easy to lose performance by using too much synchronization; for example, by separately protecting two variables that are always used together. Protecting each variable separately means you spend a lot more time on synchronization without gaining parallelism.
+```diff
+
+- Deadlocks 
+A deadlock is kind of a Catch-22, where one thread needs another thread to do something before it proceeds, 
+and the other thread needs something from the first. So they both sit there, doing nothing, waiting for each other, forever.
+This is a bad thing. A typical deadlock occurs when thread T1 obtains lock M1, and thread T2 obtains lock M2. Then 
+thread T1 tries to obtain lock M2, while thread T2 tries for lock M1. Although typically a two-thread kind of problem,
+deadlocks can involve dozens of threads in a circle, 
+all waiting for one another. They can involve a single thread that tries to obtain the same mutex twice, 
+and they can involve a thread
+that holds a lock dying while another thread is waiting for it.
+
+```
+
