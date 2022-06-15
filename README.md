@@ -104,7 +104,7 @@ The following describes the parameter. thread is a descriptor variable that is p
 
 Synchronization refers to one of two distinct but related concepts: synchronization of processes, and synchronization of data. Process synchronization refers to the idea that multiple processes are to join up or handshake at a certain point, in order to reach an agreement or commit to a certain sequence of action. Data synchronization refers to the idea of keeping multiple copies of a dataset in coherence with one another, or to maintain data integrity. Process synchronization primitives are commonly used to implement data synchronization.
 
-### Synchronization Issues 
+### Synchronization Issues  (Race Conditions /Deadlocks ...)
 In order to write any kind of concurrent program, you must be able to reliably synchronize the different threads. Failure to do so will result in all sorts of ugly, messy bugs. Without synchronization, two threads will start to change some data at the same time, one will overwrite the other.
 
  Synchronization is the method of ensuring that multiple threads coordinate their activities so that one thread doesn’t accidently change data that another thread is working on. This is done by providing function calls that can limit the number of threads that can access some data concurrently. In the simplest case (a Mutual Exclusion Lock—a mutex), only one thread at a time can execute a given piece of code. This code presumably alters some global data or does reads or writes to a device.
