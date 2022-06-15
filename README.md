@@ -1,8 +1,9 @@
-# Philosophers
+# Philosophers 
+# Anas TABTI
 In this project, you will learn the basics of threading a process. You will see how to create threads and you will discover mutexes
 ![image](https://user-images.githubusercontent.com/79755743/173885069-93a568de-c149-4e2d-aa58-8944059fc3c2.png)
 
-# My notes Anas TABTI :
+# My notes  :
 
 ## What is a process ?
 
